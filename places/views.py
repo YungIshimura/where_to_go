@@ -1,4 +1,5 @@
 from django.http import HttpResponse, JsonResponse
+from django.urls import reverse
 from django.shortcuts import get_object_or_404, render
 from .models import Event
 
@@ -17,7 +18,7 @@ def home(request):
           "properties": {
             "title": event.title,
             "placeId": event.id,
-            "detailsUrl": "static/places/moscow_legends.json"
+            "detailsUrl": reverse('event', args=(event.id, ))
           }
         },
       )
