@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import Event, Image
+from adminsortable2.admin import SortableStackedInline, SortableAdminMixin
 
 
-class ImageInline(admin.TabularInline):
+class ImageInline(SortableStackedInline ,admin.TabularInline):
     readonly_fields = ['event_image', ]
     def event_image(self, obj):
         return format_html('<img src="{url}" width="350px" height="200px" />'.format(
@@ -18,9 +19,9 @@ class ImageInline(admin.TabularInline):
 
 
 @admin.register(Event)
-class EventAdmin(admin.ModelAdmin):
+class EventAdmin(SortableAdminMixin, admin.ModelAdmin):
     inlines = [
-        ImageInline
+        ImageInline, 
     ]
 
 admin.site.register(Image)

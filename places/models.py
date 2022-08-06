@@ -7,6 +7,14 @@ class Event(models.Model):
     long_description = models.TextField(verbose_name='Полное описание мероприятия')
     longitude = models.FloatField(verbose_name='Долгота')
     latitude = models.FloatField(verbose_name='Широта')
+    order = models.IntegerField(
+        default=0,
+        blank=False,
+        null=False
+    )
+
+    class Meta:
+        ordering = ("-order",)
 
     def __str__(self):
         return self.title
@@ -18,6 +26,14 @@ class Image(models.Model):
                               related_name='images',
                               null=True)
     image = models.ImageField(verbose_name='Изображения')
-    
+    order = models.IntegerField(
+        default=0,
+        blank=False,
+        null=False
+    )
+
+    class Meta:
+        ordering = ("-order",)
+
     def __str__(self):
-        return f'{self.id} {self.event.title}'
+        return f'{self.id}'
