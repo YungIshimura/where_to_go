@@ -1,10 +1,10 @@
 from django.db import models
-
+from tinymce.models import HTMLField
 
 class Event(models.Model):
     title = models.CharField(verbose_name='Название мероприятия',max_length=250)
     short_description = models.TextField(verbose_name='Краткое описание мероприятия')
-    long_description = models.TextField(verbose_name='Полное описание мероприятия')
+    long_description = HTMLField(verbose_name='Полное описание мероприятия')
     longitude = models.FloatField(verbose_name='Долгота')
     latitude = models.FloatField(verbose_name='Широта')
     order = models.IntegerField(
