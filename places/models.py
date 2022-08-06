@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class Event(models.Model):
     title = models.CharField(verbose_name='Название мероприятия',max_length=250)
     short_description = models.TextField(verbose_name='Краткое описание мероприятия')
