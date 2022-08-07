@@ -12,6 +12,16 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from environs import Env
+
+env = Env()
+env.read_env()
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [])
+
+SECRET_KEY = env.str('SECRET_KEY')
+
+DEBUG = env.bool('DEBUG')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,18 +34,22 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+SECURE_SSL_REDIRECT = False
+
+SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE')
+
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE')
+
+SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS')
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('SECURE_HSTS_INCLUDE_SUBDOMAINS')
+
+SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD')
+
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qzj)327d7)-eth1*kyj3wq%64ydf7fwd-$m482x5%1pd2nq3&q'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
