@@ -9,7 +9,7 @@ env.read_env()
 ALLOWED_HOSTS = env.list(
     "ALLOWED_HOSTS", 
     subcast=str, 
-    default=['https://callmeishimura.pythonanywhere.com/']
+    default=['https://callmeishimura.pythonanywhere.com/', 'callmeishimura.pythonanywhere.com']
 )
 
 SECRET_KEY = env.str('SECRET_KEY', 'REPLACE_ME')
