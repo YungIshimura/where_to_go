@@ -1,16 +1,14 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import Event, Image
-from adminsortable2.admin import SortableStackedInline, SortableAdminMixin
+from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 
 
-class ImageInline(SortableStackedInline ,admin.TabularInline):
+class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     readonly_fields = ['event_image', ]
     def event_image(self, obj):
-        return format_html('<img src="{url}" width="350px" height="200px" />'.format(
+        return format_html('<img src="{url}" height="200px" />'.format(
             url = obj.image.url,
-            width=obj.image.width,
-            height=obj.image.height,
             )
         )
     
@@ -19,7 +17,7 @@ class ImageInline(SortableStackedInline ,admin.TabularInline):
 
 
 @admin.register(Event)
-class EventAdmin(SortableAdminMixin, admin.ModelAdmin):
+class EventAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
         ImageInline, 
     ]
