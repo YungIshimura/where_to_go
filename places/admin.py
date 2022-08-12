@@ -6,20 +6,22 @@ from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     readonly_fields = ['event_image', ]
+
     def event_image(self, obj):
         return format_html('<img src="{url}" height="200px" />'.format(
-            url = obj.image.url,
+            url=obj.image.url,
             )
         )
-    
+
     model = Image
-    fields = ['image', 'event_image', ] 
+    fields = ['image', 'event_image', ]
 
 
 @admin.register(Event)
 class EventAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
-        ImageInline, 
+        ImageInline,
     ]
+
 
 admin.site.register(Image)
