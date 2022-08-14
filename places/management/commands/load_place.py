@@ -5,7 +5,7 @@ from django.core.files.base import ContentFile
 
 
 class Command(BaseCommand):
-    help = 'Trash'
+    help = 'Send a link to a page that contains the desired data in json format'
 
     def handle(self, url, **options):
         response = requests.get(url)
