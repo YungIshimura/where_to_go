@@ -10,14 +10,6 @@ class Event(models.Model):
     long_description = HTMLField(verbose_name='Полное описание мероприятия')
     longitude = models.FloatField(verbose_name='Долгота')
     latitude = models.FloatField(verbose_name='Широта')
-    order = models.IntegerField(
-        default=0,
-        blank=False,
-        null=False
-    )
-
-    class Meta:
-        ordering = ("-order",)
 
     def __str__(self):
         return self.title
