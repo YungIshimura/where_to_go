@@ -15,25 +15,55 @@
 * Cкачайте этот репозиторий с Github (нажмите на зелёную кнопку ```code``` или воспользуйтесь Github Desktop).
 * Перейдите в рабочую директорию.
 * Установите виртуальное окружение при помощи команды ниже:
-```python
+``` sh
 python3 -m venv venv
 ```
 И активируйте его.
-```python
+``` sh
 source venv/bin/activate
 ```
 * Установите необходимые зависимости.
 
-```python
+``` sh
 pip install -r requirements.txt
 ```
+* Настройте переменные окружения
+Для этого создайте рядом с файлом ```manage.py``` папку ```.env``` и добавьте все необходимые данные, а именно:
+```
+ALLOWED_HOSTS
+SECRET_KEY
+DEBUG
+MEDIA_ROOT
+MEDIA_URL
+STATIC_URL
+STATIC_ROOT
+```
+  
+Если вы собираетесь деплоить этот сайт, то также стоит добавить:
+```
+SESSION_COOKIE_SECURE
+CSRF_COOKIE_SECURE
+SECURE_HSTS_SECONDS
+SECURE_HSTS_INCLUDE_SUBDOMAINS
+SECURE_HSTS_PRELOAD
+SECURE_CONTENT_TYPE_NOSNIFF
+```
+После чего необходимо перейти в ```settings.py``` и, при помощи ```os.getenv``` или ```environs```, добавить их.
+
+Примеры использования [os](https://python-scripts.com/import-os-example) - https://python-scripts.com/import-os-example
+
+Документация к [environs](https://pypi.org/project/environs/) - https://pypi.org/project/environs/
+* Примените все миграции.
+``` sh
+python3 manage.py migrate
+```
 * Добавьте админа.
-```python
+``` sh
 python3 manage.py createsuperuser
 ``` 
 После этого шага вы можете зайти в админку.
 Для этого в адресной строке сайта необходимо написать:
-```
+```sh
 http://127.0.0.1:8000/admin
 ```
 Или же просто нажав [сюда](http://127.0.0.1:8000/admin).
@@ -61,7 +91,7 @@ http://127.0.0.1:8000/admin
 
 ### Добавление через команду
 Для этого просто прописываем в консоли следующую команду:
-```python
+``` sh
 python manage.py load_place (ссылка на данные в формате json)
 ```
 Второй метод куда быстрее и удобнее =).
