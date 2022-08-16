@@ -6,10 +6,11 @@ class Event(models.Model):
     title = models.CharField(verbose_name='Название мероприятия',
                              max_length=250)
     short_description = models.TextField(
-        verbose_name='Краткое описание мероприятия')
-    long_description = HTMLField(verbose_name='Полное описание мероприятия')
-    longitude = models.FloatField(verbose_name='Долгота')
-    latitude = models.FloatField(verbose_name='Широта')
+        verbose_name='Краткое описание мероприятия', blank=True)
+    long_description = HTMLField(verbose_name='Полное описание мероприятия',
+                                 blank=True)
+    longitude = models.DecimalField(verbose_name='Долгота', max_digits=9, decimal_places=7)
+    latitude = models.DecimalField(verbose_name='Широта', max_digits=9, decimal_places=7)
 
     def __str__(self):
         return self.title
