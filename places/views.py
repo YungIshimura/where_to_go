@@ -6,23 +6,20 @@ from .models import Event
 
 def show_home(request):
     events = Event.objects.all()
-    features = {}
-    event_details = []
-    for event in events:
-        event_details.append({
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [event.longitude, event.latitude]
-          },
-          "properties": {
-            "title": event.title,
-            "placeId": event.id,
-            "detailsUrl": reverse('event', args=(event.id, ))
-          }
-        },
-        )
-    features['features'] = event_details
+    event_details = [{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [event.longitude, event.latitude]
+      },
+      "properties": {
+        "title": event.title,
+        "placeId": event.id,
+        "detailsUrl": reverse('event', args=(event.id, ))
+      }
+    } for event in events]
+    features = {'features': event_details}
+
     return render(request, 'index.html', context=features)
 
 
