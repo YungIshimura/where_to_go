@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from .models import Event
 
 
-def home(request):
+def show_home(request):
     events = Event.objects.all()
     features = {}
     event_details = []
@@ -26,7 +26,7 @@ def home(request):
     return render(request, 'index.html', context=features)
 
 
-def event(request, event_id):
+def show_event(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     response = {
       "title": event.title,

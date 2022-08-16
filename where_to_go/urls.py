@@ -8,6 +8,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('tinymce/', include('tinymce.urls'), ),
     path('admin/', admin.site.urls),
-    path('', views.home),
-    path('places/<event_id>', views.event, name='event')
+    path('', views.show_home),
+    path('places/<event_id>', views.show_event, name='event')
 ]
