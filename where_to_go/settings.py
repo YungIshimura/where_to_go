@@ -13,7 +13,7 @@ ALLOWED_HOSTS = env.list(
     default=['127.0.0.1', 'https://callmeishimura.pythonanywhere.com/', 'callmeishimura.pythonanywhere.com']
 )
 
-SECRET_KEY = env.str('SECRET_KEY', 'REPLACE_ME')
+SECRET_KEY = env.str('SECRET_KEY')
 
 DEBUG = env.bool('DEBUG', default=True)
 
