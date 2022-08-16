@@ -21,11 +21,7 @@ class Command(BaseCommand):
         for image in event_json['imgs']:
             response = requests.get(image)
             response.raise_for_status
-            binary_image = response.content
-            image = Image.objects.create(event=event)
-            image.image.save(f'{event.id} {event.title}',
-                             ContentFile(binary_image),
-                             save=True)
+            image = Image.objects.create(event=event, image=ContentFile(response.content, name=f'{event.id} {event.title}' ))
 
     def add_arguments(self, parser):
         parser.add_argument(

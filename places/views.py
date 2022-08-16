@@ -39,6 +39,8 @@ def event(request, event_id):
       }
       }
 
-    return JsonResponse(response, safe=False,
-                        json_dumps_params={'ensure_ascii': False,
-                                           'indent': 2})
+    return JsonResponse(response,
+                        json_dumps_params={
+                          'ensure_ascii': False,
+                          }
+                        )

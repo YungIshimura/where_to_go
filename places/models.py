@@ -24,8 +24,6 @@ class Image(models.Model):
     image = models.ImageField(verbose_name='Изображения')
     order = models.IntegerField(
         default=0,
-        blank=False,
-        null=False
     )
 
     class Meta:
