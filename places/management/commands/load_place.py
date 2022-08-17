@@ -12,10 +12,12 @@ class Command(BaseCommand):
         response.raise_for_status()
         event_json = response.json()
         Event.objects.get_or_create(title=event_json['title'],
-                                    short_description=event_json['description_short'],
-                                    long_description=event_json['description_long'],
-                                    longitude=event_json['coordinates']['lng'],
-                                    latitude=event_json['coordinates']['lat'])
+                                    defaults={
+                                    'short_description': event_json['description_short'],
+                                    'long_description': event_json['description_long'],
+                                    'longitude':event_json['coordinates']['lng'],
+                                    'latitude': event_json['coordinates']['lat']
+                                    })
         event = Event.objects.get(title=event_json['title'])
 
         for image in event_json['imgs']:
