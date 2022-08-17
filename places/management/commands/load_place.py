@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
         for image in event_json['imgs']:
             response = requests.get(image)
-            response.raise_for_status
+            response.raise_for_status()
             image = Image.objects.create(event=event, image=ContentFile(response.content, name=f'{event.id} {event.title}' ))
 
     def add_arguments(self, parser):
