@@ -13,8 +13,8 @@ class Command(BaseCommand):
         event_json = response.json()
         Event.objects.get_or_create(title=event_json['title'],
                                     defaults={
-                                    'short_description': event_json['description_short'],
-                                    'long_description': event_json['description_long'],
+                                    'short_description': event_json.setdefault('description_short', ''),
+                                    'long_description': event_json.setdefault('description_long', ''),
                                     'longitude':event_json['coordinates']['lng'],
                                     'latitude': event_json['coordinates']['lat']
                                     })
