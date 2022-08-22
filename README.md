@@ -29,26 +29,42 @@ pip install -r requirements.txt
 ```
 * Настройте переменные окружения
 Для этого создайте рядом с файлом ```manage.py``` папку ```.env``` и добавьте все необходимые данные, а именно:
-```
-ALLOWED_HOSTS
-SECRET_KEY
-DEBUG
-MEDIA_ROOT
-MEDIA_URL
-STATIC_URL
-STATIC_ROOT
-```
+
+  [ALLOWED_HOSTS](https://docs.djangoproject.com/en/4.1/ref/settings/#allowed-hosts)
+
+  [SECRET_KEY](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-SECRET_KEY)
+
+  [DEBUG](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-DEBUG)
+
+  [MEDIA_ROOT](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-MEDIA_ROOT)
+
+  [MEDIA_URL](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-MEDIA_URL)
+
+  [STATIC_URL](https://docs.djangoproject.com/en/4.1/ref/settings/#static-url)
+
+  [STATIC_ROOT](https://docs.djangoproject.com/en/4.1/ref/settings/#static-root)
   
-Если вы собираетесь деплоить этот сайт, то также стоит добавить:
-```
-SESSION_COOKIE_SECURE
-CSRF_COOKIE_SECURE
-SECURE_HSTS_SECONDS
-SECURE_HSTS_INCLUDE_SUBDOMAINS
-SECURE_HSTS_PRELOAD
-SECURE_CONTENT_TYPE_NOSNIFF
-```
+* Если вы собираетесь деплоить этот сайт, то также стоит добавить:
+
+  [SESSION_COOKIE_SECURE](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-SESSION_COOKIE_SECURE)
+
+  [CSRF_COOKIE_SECURE](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-CSRF_COOKIE_SECURE)
+
+  [SECURE_HSTS_SECONDS](https://docs.djangoproject.com/en/4.1/ref/settings/#secure-hsts-seconds)
+
+  [SECURE_HSTS_INCLUDE_SUBDOMAINS](https://docs.djangoproject.com/en/4.1/ref/settings/#secure-hsts-include-subdomains)
+
+  [SECURE_HSTS_PRELOAD](https://docs.djangoproject.com/en/4.1/ref/settings/#secure-hsts-preload)
+
+  [SECURE_CONTENT_TYPE_NOSNIFF](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-SECURE_CONTENT_TYPE_NOSNIFF)
+
+
 После чего необходимо перейти в ```settings.py``` и, при помощи ```os.getenv``` или ```environs```, добавить их.
+
+Пример готового ```.env``` файла
+
+![Пример .env файла](https://user-images.githubusercontent.com/83189636/186014175-cf85887c-e444-4006-bfc7-18b6b89c5890.png)
+
 
 Примеры использования [os](https://python-scripts.com/import-os-example) - https://python-scripts.com/import-os-example
 
