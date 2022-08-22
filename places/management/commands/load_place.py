@@ -18,7 +18,7 @@ class Command(BaseCommand):
                         'long_description': place.setdefault('description_long', ''),
                         'longitude': place['coordinates']['lng'],
                         'latitude': place['coordinates']['lat']
-                        })
+                    })
 
         if event[1]:
             for image in place['imgs']:

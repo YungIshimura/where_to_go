@@ -7,17 +7,20 @@ from .models import Event
 def show_home(request):
     events = Event.objects.all()
     event_details = [{
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [event.longitude, event.latitude]
-      },
-      "properties": {
-        "title": event.title,
-        "placeId": event.id,
-        "detailsUrl": reverse('event', args=(event.id, ))
-      }
-    } for event in events]
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [event.longitude, event.latitude]
+           },
+
+          "properties": {
+          "title": event.title,
+          "placeId": event.id,
+          "detailsUrl": reverse('event', args=(event.id, ))
+         }
+
+       } for event in events]
+
     features = {'features': event_details}
 
     return render(request, 'index.html', context=features)
@@ -33,11 +36,8 @@ def show_event(request, event_id):
       "coordinates": {
         "lat": event.latitude,
         "lng": event.longitude
-      }
+        }
       }
 
     return JsonResponse(response,
-                        json_dumps_params={
-                          'ensure_ascii': False,
-                          }
-                        )
+                        json_dumps_params={'ensure_ascii': False, })
