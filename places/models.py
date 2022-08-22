@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Event(models.Model):
@@ -9,8 +10,20 @@ class Event(models.Model):
         verbose_name='Краткое описание мероприятия', blank=True)
     long_description = HTMLField(verbose_name='Полное описание мероприятия',
                                  blank=True)
-    longitude = models.DecimalField(verbose_name='Долгота', max_digits=9, decimal_places=7)
-    latitude = models.DecimalField(verbose_name='Широта', max_digits=9, decimal_places=7)
+    longitude = models.DecimalField(verbose_name='Долгота',
+                                    max_digits=10,
+                                    decimal_places=7,
+                                    validators=[
+                                        MinValueValidator(-180),
+                                        MaxValueValidator(180)
+                                    ])
+    latitude = models.DecimalField(verbose_name='Широта',
+                                   max_digits=9,
+                                   decimal_places=7,
+                                   validators=[
+                                        MinValueValidator(-90),
+                                        MaxValueValidator(90)
+                                   ])
 
     def __str__(self):
         return self.title
