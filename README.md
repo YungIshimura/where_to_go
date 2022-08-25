@@ -58,9 +58,6 @@ pip install -r requirements.txt
 
   [SECURE_CONTENT_TYPE_NOSNIFF](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-SECURE_CONTENT_TYPE_NOSNIFF)
 
-
-После чего необходимо перейти в ```settings.py``` и, при помощи ```os.getenv``` или ```environs```, добавить их.
-
 Пример готового ```.env``` файла
 
 ``` bash
