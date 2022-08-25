@@ -11,7 +11,7 @@ class Command(BaseCommand):
         response = requests.get(url)
         response.raise_for_status()
         place = response.json()
-        event = Event.objects.get_or_create(
+        event, created = Event.objects.get_or_create(
             title=place['title'],
             defaults={
                 'short_description': place.setdefault('description_short', ''),
@@ -20,12 +20,12 @@ class Command(BaseCommand):
                 'latitude': place['coordinates']['lat']
             })
 
-        if event[1]:
+        if created:
             for image in place['imgs']:
                 response = requests.get(image)
                 response.raise_for_status()
-                Image.objects.create(event=event[0], image=ContentFile(
-                    response.content, name=f'{event[0].id} {event[0].title}'))
+                Image.objects.create(event=event, image=ContentFile(
+                    response.content, name=f'{event.id} {event.title}'))
 
     def add_arguments(self, parser):
         parser.add_argument(
