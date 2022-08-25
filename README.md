@@ -63,8 +63,14 @@ pip install -r requirements.txt
 
 Пример готового ```.env``` файла
 
-![Пример .env файла](https://user-images.githubusercontent.com/83189636/186014175-cf85887c-e444-4006-bfc7-18b6b89c5890.png)
-
+``` bash
+DEBUG=True
+ALLOWED_HOST=['localhost',]
+SECRET_KEY='REPLACE_ME'
+STATIC_URL='/static/'
+STATIC_ROOT='static/'
+MEDIA_URL='/media/'
+```
 
 Примеры использования [os](https://python-scripts.com/import-os-example) - https://python-scripts.com/import-os-example
 
