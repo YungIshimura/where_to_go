@@ -1,7 +1,8 @@
+from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 from django.contrib import admin
 from django.utils.html import format_html
+
 from .models import Event, Image
-from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 
 
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -10,7 +11,7 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     def event_image(self, obj):
         return format_html('<img src="{url}" height="200px" />'.format(
             url=obj.image.url,
-            )
+        )
         )
 
     model = Image

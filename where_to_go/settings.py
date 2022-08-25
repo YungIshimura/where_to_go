@@ -1,16 +1,17 @@
-from pathlib import Path
 import os
-from environs import Env
+from pathlib import Path
 
+from environs import Env
 
 env = Env()
 env.read_env()
 
 
 ALLOWED_HOSTS = env.list(
-    "ALLOWED_HOSTS", 
-    subcast=str, 
-    default=['127.0.0.1', 'https://callmeishimura.pythonanywhere.com/', 'callmeishimura.pythonanywhere.com']
+    "ALLOWED_HOSTS",
+    subcast=str,
+    default=['127.0.0.1', 'https://callmeishimura.pythonanywhere.com/',
+             'callmeishimura.pythonanywhere.com']
 )
 
 SECRET_KEY = env.str('SECRET_KEY')
@@ -31,11 +32,13 @@ CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=True)
 
 SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=31536000)
 
-SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(
+    'SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True)
 
 SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD', default=True)
 
-SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF', default=True)
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
+    'SECURE_CONTENT_TYPE_NOSNIFF', default=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/

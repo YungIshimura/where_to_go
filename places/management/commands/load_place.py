@@ -1,7 +1,7 @@
-from django.core.management.base import BaseCommand
 import requests
-from places.models import Event, Image
 from django.core.files.base import ContentFile
+from django.core.management.base import BaseCommand
+from places.models import Event, Image
 
 
 class Command(BaseCommand):
@@ -14,11 +14,11 @@ class Command(BaseCommand):
         event = Event.objects.get_or_create(
             title=place['title'],
             defaults={
-                        'short_description': place.setdefault('description_short', ''),
-                        'long_description': place.setdefault('description_long', ''),
-                        'longitude': place['coordinates']['lng'],
-                        'latitude': place['coordinates']['lat']
-                    })
+                'short_description': place.setdefault('description_short', ''),
+                'long_description': place.setdefault('description_long', ''),
+                'longitude': place['coordinates']['lng'],
+                'latitude': place['coordinates']['lat']
+            })
 
         if event[1]:
             for image in place['imgs']:
