@@ -28,7 +28,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 * Настройте переменные окружения
-Для этого создайте рядом с файлом ```manage.py``` папку ```.env``` и добавьте все необходимые данные, а именно:
+Для этого создайте рядом с файлом ```manage.py``` файл ```.env``` и добавьте все необходимые данные, а именно:
 
   [ALLOWED_HOSTS](https://docs.djangoproject.com/en/4.1/ref/settings/#allowed-hosts)
 
@@ -62,7 +62,7 @@ pip install -r requirements.txt
 
 ``` bash
 DEBUG=True
-ALLOWED_HOST=['localhost',]
+ALLOWED_HOSTS=['localhost', '127.0.0.1']
 SECRET_KEY='REPLACE_ME'
 STATIC_URL='/static/'
 STATIC_ROOT='static/'
