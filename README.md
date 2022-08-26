@@ -62,7 +62,7 @@ pip install -r requirements.txt
 
 ``` bash
 DEBUG=True
-ALLOWED_HOSTS='localhost', '127.0.0.1'
+ALLOWED_HOSTS=localhost, 127.0.0.1
 SECRET_KEY='REPLACE_ME'
 STATIC_URL='/static/'
 STATIC_ROOT='static/'
