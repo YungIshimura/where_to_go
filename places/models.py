@@ -5,7 +5,8 @@ from tinymce.models import HTMLField
 
 class Event(models.Model):
     title = models.CharField(verbose_name='Название мероприятия',
-                             max_length=250)
+                             max_length=250,
+                             unique=True)
 
     short_description = models.TextField(
         verbose_name='Краткое описание мероприятия', blank=True)
